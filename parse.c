@@ -28,6 +28,7 @@ FILE* openChipInfoDb(void)
         if ((fp = fopen(Path, "rt")) == NULL) {
             // ChipInfoDb.dedicfg not in program directory
             strcpy(Path, dirname(Path));
+            strcpy(Path, dirname(Path));
             strcat(Path, "/include/ChipInfoDb.dedicfg");
             if ((fp = fopen(Path, "rt")) == NULL)
                 fprintf(stderr, "Error opening file: %s\n", Path);
