@@ -1,5 +1,5 @@
-# SF100Linux
-Linux software for Dediprog SF100 and SF600 SPI flash programmers
+# SF100Mac
+Mac software for Dediprog SF100 and SF600 SPI flash programmers
 
 ## Building
 To compile the project, first install required dependencies:
@@ -7,7 +7,7 @@ To compile the project, first install required dependencies:
 
 Change to the directory where the sources are located and build using make:
 ```bash
-$ cd SF100Linux
+$ cd SF100Mac
 $ make
 ```
 

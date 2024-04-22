@@ -19,26 +19,20 @@ FILE* openChipInfoDb(void)
 {
     FILE* fp = NULL;
     char Path[linebufsize];
+    uint32_t size = sizeof(Path);
 
     memset(Path, 0, linebufsize);
-    if (readlink("/proc/self/exe", Path, 512) != -1) {
-        dirname(Path);
+    if (_NSGetExecutablePath(Path, &size) == 0) {
+        strcpy(Path, dirname(Path));
         strcat(Path, "/ChipInfoDb.dedicfg");
-        //		printf("%s\n",Path);
         if ((fp = fopen(Path, "rt")) == NULL) {
             // ChipInfoDb.dedicfg not in program directory
-            dirname(Path);
-            dirname(Path);
-            strcat(Path, "/share/DediProg/ChipInfoDb.dedicfg");
-            //			printf("%s\n",Path);
+            strcpy(Path, dirname(Path));
+            strcat(Path, "/include/ChipInfoDb.dedicfg");
             if ((fp = fopen(Path, "rt")) == NULL)
                 fprintf(stderr, "Error opening file: %s\n", Path);
         }
     }
-
-    //xml_parse_result result = doc.load_file( Path );
-    //if ( result.status != xml_parse_status::status_ok )
-    //	return;
 
     return fp;
 }

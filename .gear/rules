@@ -1,3 +1,3 @@
-spec: .gear/sf100linux.spec
+spec: .gear/sf100mac.spec
 tar: .
 
