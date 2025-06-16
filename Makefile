@@ -59,14 +59,14 @@ install: $(PROGRAM)
 	install -v -o 0 -g 0 -m 755 -d $(DESTDIR)$(PREFIX)/bin $(DESTDIR)$(PREFIX)/share/DediProg
 	echo -n "install: " && install -v -o 0 -g 0 -m 0755 $(PROGRAM) $(DESTDIR)$(PREFIX)/bin/$(PROGRAM)
 	strip $(DESTDIR)$(PREFIX)/bin/$(PROGRAM)
-	install -v -o 0 -g 0 -m 755 -d $(DESTDIR)$(PREFIX)/share/DediProg
-	echo -n "install: " && install -v -o 0 -g 0 -m 0644 ChipInfoDb.dedicfg $(DESTDIR)$(PREFIX)/share/DediProg/ChipInfoDb.dedicfg
+	install -v -o 0 -g 0 -m 755 -d $(DESTDIR)$(PREFIX)/include
+	echo -n "install: " && install -v -o 0 -g 0 -m 0644 ChipInfoDb.dedicfg $(DESTDIR)$(PREFIX)/include/ChipInfoDb.dedicfg
 	install -v -o 0 -g 0 -m 755 -d $(DESTDIR)/etc/udev/rules.d
 	echo -n "install: " && install -v -o 0 -g 0 -m 0644 60-dediprog.rules $(DESTDIR)/etc/udev/rules.d/60-dediprog.rules
 
 uninstall:
 	[ $(shell id -u) -eq 0 ] || (echo "Error: uninstall needs root privileges" && false)
-	rm -vf $(DESTDIR)$(PREFIX)/bin/$(PROGRAM) $(DESTDIR)$(PREFIX)/share/DediProg/ChipInfoDb.dedicfg $(DESTDIR)/etc/udev/rules.d/60-dediprog.rules
+	rm -vf $(DESTDIR)$(PREFIX)/bin/$(PROGRAM) $(DESTDIR)$(PREFIX)/include/ChipInfoDb.dedicfg $(DESTDIR)/etc/udev/rules.d/60-dediprog.rules
 	[ -d "$(DESTDIR)$(PREFIX)/share/DediProg" ] && rmdir -vd $(DESTDIR)$(PREFIX)/share/DediProg || true
 
 # Run before every release / check-in to keep the source code tidy
